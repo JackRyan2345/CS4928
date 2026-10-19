@@ -2,6 +2,7 @@
 *.sh
 *.log
 .DS_Store
+How_Does*
 
 # local clones and tool (not tracked)
 cascading/
