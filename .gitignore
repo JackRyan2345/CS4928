@@ -1,6 +1,7 @@
 *.txt
 *.sh
 *.log
+.DS_Store
 
 # local clones and tool (not tracked)
 cascading/
