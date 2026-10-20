@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="970" font-family="sans-serif" font-size="11">
+<rect width="100%" height="100%" fill="white"/>
+<line x1="300.0" y1="35" x2="300.0" y2="920" stroke="#ddd" stroke-dasharray="3,3"/>
+<text x="300.0" y="935" text-anchor="middle">0</text>
+<line x1="405.0" y1="35" x2="405.0" y2="920" stroke="#ddd" stroke-dasharray="3,3"/>
+<text x="405.0" y="935" text-anchor="middle">5</text>
+<line x1="510.0" y1="35" x2="510.0" y2="920" stroke="#ddd" stroke-dasharray="3,3"/>
+<text x="510.0" y="935" text-anchor="middle">10</text>
+<line x1="615.0" y1="35" x2="615.0" y2="920" stroke="#ddd" stroke-dasharray="3,3"/>
+<text x="615.0" y="935" text-anchor="middle">15</text>
+<line x1="720.0" y1="35" x2="720.0" y2="920" stroke="#ddd" stroke-dasharray="3,3"/>
+<text x="720.0" y="935" text-anchor="middle">20</text>
+<text x="294" y="55.0" text-anchor="end">ADD_METHOD_ANNOTATION</text>
+<rect x="300" y="43" width="271.2" height="8" fill="#e8696b"/>
+<rect x="300" y="51" width="386.0" height="8" fill="#7aaee0"/>
+<text x="294" y="77.0" text-anchor="end">ADD_PARAMETER_MODIFIER</text>
+<rect x="300" y="65" width="190.5" height="8" fill="#e8696b"/>
+<rect x="300" y="73" width="163.8" height="8" fill="#7aaee0"/>
+<text x="294" y="99.0" text-anchor="end">ADD_VARIABLE_MODIFIER</text>
+<rect x="300" y="87" width="118.9" height="8" fill="#e8696b"/>
+<rect x="300" y="95" width="209.5" height="8" fill="#7aaee0"/>
+<text x="294" y="121.0" text-anchor="end">CHANGE_VARIABLE_TYPE</text>
+<rect x="300" y="109" width="111.6" height="8" fill="#e8696b"/>
+<rect x="300" y="117" width="169.2" height="8" fill="#7aaee0"/>
+<text x="294" y="143.0" text-anchor="end">CHANGE_PARAMETER_TYPE</text>
+<rect x="300" y="131" width="122.2" height="8" fill="#e8696b"/>
+<rect x="300" y="139" width="43.7" height="8" fill="#7aaee0"/>
+<text x="294" y="165.0" text-anchor="end">RENAME_METHOD</text>
+<rect x="300" y="153" width="61.3" height="8" fill="#e8696b"/>
+<rect x="300" y="161" width="75.7" height="8" fill="#7aaee0"/>
+<text x="294" y="187.0" text-anchor="end">MOVE_CLASS</text>
+<rect x="300" y="175" width="65.9" height="8" fill="#e8696b"/>
+<rect x="300" y="183" width="70.5" height="8" fill="#7aaee0"/>
+<text x="294" y="209.0" text-anchor="end">ADD_PARAMETER</text>
+<rect x="300" y="197" width="88.2" height="8" fill="#e8696b"/>
+<rect x="300" y="205" width="42.3" height="8" fill="#7aaee0"/>
+<text x="294" y="231.0" text-anchor="end">CHANGE_RETURN_TYPE</text>
+<rect x="300" y="219" width="78.5" height="8" fill="#e8696b"/>
+<rect x="300" y="227" width="38.9" height="8" fill="#7aaee0"/>
+<text x="294" y="253.0" text-anchor="end">RENAME_VARIABLE</text>
+<rect x="300" y="241" width="44.1" height="8" fill="#e8696b"/>
+<rect x="300" y="249" width="60.4" height="8" fill="#7aaee0"/>
+<text x="294" y="275.0" text-anchor="end">CHANGE_ATTRIBUTE_TYPE</text>
+<rect x="300" y="263" width="49.7" height="8" fill="#e8696b"/>
+<rect x="300" y="271" width="53.1" height="8" fill="#7aaee0"/>
+<text x="294" y="297.0" text-anchor="end">EXTRACT_OPERATION</text>
+<rect x="300" y="285" width="60.0" height="8" fill="#e8696b"/>
+<rect x="300" y="293" width="40.2" height="8" fill="#7aaee0"/>
+<text x="294" y="319.0" text-anchor="end">CHANGE_OPERATION_ACCESS_MODIFIER</text>
+<rect x="300" y="307" width="53.0" height="8" fill="#e8696b"/>
+<rect x="300" y="315" width="31.0" height="8" fill="#7aaee0"/>
+<text x="294" y="341.0" text-anchor="end">RENAME_PARAMETER</text>
+<rect x="300" y="329" width="62.2" height="8" fill="#e8696b"/>
+<rect x="300" y="337" width="20.8" height="8" fill="#7aaee0"/>
+<text x="294" y="363.0" text-anchor="end">REMOVE_THROWN_EXCEPTION_TYPE</text>
+<rect x="300" y="351" width="21.5" height="8" fill="#e8696b"/>
+<rect x="300" y="359" width="54.8" height="8" fill="#7aaee0"/>
+<text x="294" y="385.0" text-anchor="end">REMOVE_PARAMETER</text>
+<rect x="300" y="373" width="52.4" height="8" fill="#e8696b"/>
+<rect x="300" y="381" width="23.0" height="8" fill="#7aaee0"/>
+<text x="294" y="407.0" text-anchor="end">MOVE_OPERATION</text>
+<rect x="300" y="395" width="33.6" height="8" fill="#e8696b"/>
+<rect x="300" y="403" width="40.0" height="8" fill="#7aaee0"/>
+<text x="294" y="429.0" text-anchor="end">EXTRACT_VARIABLE</text>
+<rect x="300" y="417" width="46.5" height="8" fill="#e8696b"/>
+<rect x="300" y="425" width="25.5" height="8" fill="#7aaee0"/>
+<text x="294" y="451.0" text-anchor="end">CHANGE_ATTRIBUTE_ACCESS_MODIFIER</text>
+<rect x="300" y="439" width="44.2" height="8" fill="#e8696b"/>
+<rect x="300" y="447" width="25.6" height="8" fill="#7aaee0"/>
+<text x="294" y="473.0" text-anchor="end">REMOVE_ATTRIBUTE_MODIFIER</text>
+<rect x="300" y="461" width="56.5" height="8" fill="#e8696b"/>
+<rect x="300" y="469" width="8.5" height="8" fill="#7aaee0"/>
+<text x="294" y="495.0" text-anchor="end">RENAME_ATTRIBUTE</text>
+<rect x="300" y="483" width="29.2" height="8" fill="#e8696b"/>
+<rect x="300" y="491" width="33.1" height="8" fill="#7aaee0"/>
+<text x="294" y="517.0" text-anchor="end">REMOVE_METHOD_ANNOTATION</text>
+<rect x="300" y="505" width="15.2" height="8" fill="#e8696b"/>
+<rect x="300" y="513" width="46.1" height="8" fill="#7aaee0"/>
+<text x="294" y="539.0" text-anchor="end">ADD_ATTRIBUTE_MODIFIER</text>
+<rect x="300" y="527" width="38.6" height="8" fill="#e8696b"/>
+<rect x="300" y="535" width="19.8" height="8" fill="#7aaee0"/>
+<text x="294" y="561.0" text-anchor="end">ADD_CLASS_ANNOTATION</text>
+<rect x="300" y="549" width="10.0" height="8" fill="#e8696b"/>
+<rect x="300" y="557" width="42.7" height="8" fill="#7aaee0"/>
+<text x="294" y="583.0" text-anchor="end">PULL_UP_OPERATION</text>
+<rect x="300" y="571" width="25.6" height="8" fill="#e8696b"/>
+<rect x="300" y="579" width="18.7" height="8" fill="#7aaee0"/>
+<text x="294" y="605.0" text-anchor="end">ADD_METHOD_MODIFIER</text>
+<rect x="300" y="593" width="34.1" height="8" fill="#e8696b"/>
+<rect x="300" y="601" width="8.7" height="8" fill="#7aaee0"/>
+<text x="294" y="627.0" text-anchor="end">ADD_THROWN_EXCEPTION_TYPE</text>
+<rect x="300" y="615" width="15.4" height="8" fill="#e8696b"/>
+<rect x="300" y="623" width="27.4" height="8" fill="#7aaee0"/>
+<text x="294" y="649.0" text-anchor="end">INLINE_VARIABLE</text>
+<rect x="300" y="637" width="16.8" height="8" fill="#e8696b"/>
+<rect x="300" y="645" width="12.4" height="8" fill="#7aaee0"/>
+<text x="294" y="671.0" text-anchor="end">REMOVE_CLASS_ANNOTATION</text>
+<rect x="300" y="659" width="5.8" height="8" fill="#e8696b"/>
+<rect x="300" y="667" width="22.8" height="8" fill="#7aaee0"/>
+<text x="294" y="693.0" text-anchor="end">MOVE_ATTRIBUTE</text>
+<rect x="300" y="681" width="14.8" height="8" fill="#e8696b"/>
+<rect x="300" y="689" width="13.8" height="8" fill="#7aaee0"/>
+<text x="294" y="715.0" text-anchor="end">RENAME_CLASS</text>
+<rect x="300" y="703" width="8.3" height="8" fill="#e8696b"/>
+<rect x="300" y="711" width="19.6" height="8" fill="#7aaee0"/>
+<text x="294" y="737.0" text-anchor="end">EXTRACT_AND_MOVE_OPERATION</text>
+<rect x="300" y="725" width="14.4" height="8" fill="#e8696b"/>
+<rect x="300" y="733" width="12.2" height="8" fill="#7aaee0"/>
+<text x="294" y="759.0" text-anchor="end">REMOVE_METHOD_MODIFIER</text>
+<rect x="300" y="747" width="17.7" height="8" fill="#e8696b"/>
+<rect x="300" y="755" width="6.6" height="8" fill="#7aaee0"/>
+<text x="294" y="781.0" text-anchor="end">REPLACE_VARIABLE_WITH_ATTRIBUTE</text>
+<rect x="300" y="769" width="8.3" height="8" fill="#e8696b"/>
+<rect x="300" y="777" width="13.1" height="8" fill="#7aaee0"/>
+<text x="294" y="803.0" text-anchor="end">ADD_ATTRIBUTE_ANNOTATION</text>
+<rect x="300" y="791" width="5.3" height="8" fill="#e8696b"/>
+<rect x="300" y="799" width="16.1" height="8" fill="#7aaee0"/>
+<text x="294" y="825.0" text-anchor="end">MODIFY_METHOD_ANNOTATION</text>
+<rect x="300" y="813" width="3.2" height="8" fill="#e8696b"/>
+<rect x="300" y="821" width="18.2" height="8" fill="#7aaee0"/>
+<text x="294" y="847.0" text-anchor="end">PUSH_DOWN_OPERATION</text>
+<rect x="300" y="835" width="15.9" height="8" fill="#e8696b"/>
+<rect x="300" y="843" width="4.5" height="8" fill="#7aaee0"/>
+<text x="294" y="869.0" text-anchor="end">MOVE_CODE</text>
+<rect x="300" y="857" width="1.6" height="8" fill="#e8696b"/>
+<rect x="300" y="865" width="18.0" height="8" fill="#7aaee0"/>
+<text x="294" y="891.0" text-anchor="end">PULL_UP_ATTRIBUTE</text>
+<rect x="300" y="879" width="11.7" height="8" fill="#e8696b"/>
+<rect x="300" y="887" width="7.4" height="8" fill="#7aaee0"/>
+<text x="294" y="913.0" text-anchor="end">ENCAPSULATE_ATTRIBUTE</text>
+<rect x="300" y="901" width="11.4" height="8" fill="#e8696b"/>
+<rect x="300" y="909" width="7.0" height="8" fill="#7aaee0"/>
+<text x="510.0" y="958" text-anchor="middle">Percentage [%]</text>
+<rect x="590" y="10" width="12" height="10" fill="#e8696b"/><text x="607" y="19">Production Code</text>
+<rect x="590" y="24" width="12" height="10" fill="#7aaee0"/><text x="607" y="33">Test Code</text>
+</svg>
