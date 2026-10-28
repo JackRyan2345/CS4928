@@ -1,5 +1,5 @@
 | Type | Refactoring commits<br>Prod. commits | Refactoring commits<br>Test commits | Refactoring commits<br>Co-occur. commits | Refactored files<br>Prod. code | Refactored files<br>Test code | Refactoring instances<br>Prod. code | Refactoring instances<br>Test code |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Mean | 653 | 136 | 129 | 864 | 653 | 6,434 | 2,185 |
-| Median | 550 | 34 | 34 | 458 | 129 | 3,739 | 487 |
-| Sum | 7,191 (71.1%) | 1,498 (14.8%) | 1,429 (14.1%) | 9,509 (57.0%) | 7,188 (43.0%) | 70,779 (74.6%) | 24,039 (25.4%) |
+| Mean | 544 | 92 | 78 | 722 | 548 | 5,107 | 1,370 |
+| Median | 313 | 43 | 31 | 400 | 110 | 2,959 | 431 |
+| Sum | 6,532 (76.2%) | 1,107 (12.9%) | 937 (10.9%) | 8,673 (56.8%) | 6,584 (43.2%) | 61,286 (78.8%) | 16,450 (21.2%) |
