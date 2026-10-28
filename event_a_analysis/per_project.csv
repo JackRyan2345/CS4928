@@ -1,0 +1,12 @@
+project,analyzed_commits,refactoring_commits,total_refactorings,prod_commits,test_commits,cooccur_commits,prod_files,test_files,prod_refactorings,test_refactorings
+apache_karaf,8075,1660,14021,1346,172,142,2491,935,12586,1458
+brianfrankcooper_YCSB,974,241,2316,206,17,18,398,251,2102,216
+connectbot_connectbot,1916,339,2030,320,14,5,148,18,1904,126
+cyclestreets_android,1593,576,3768,564,4,8,402,4,3739,29
+ervandew_eclim,4857,596,5049,550,17,29,679,129,4564,487
+jboss-modules_jboss-modules,1106,365,2687,329,19,17,183,33,2479,209
+jenkinsci_gerrit-trigger-plugin,1470,429,3193,298,61,70,198,92,2125,1069
+lysine-dev_retrofit,1445,448,5675,266,52,130,458,314,3440,2245
+unclebob_fitnesse,5135,1982,21711,845,549,588,1051,1246,12012,9728
+vrapper_vrapper,2469,719,4074,651,34,34,514,51,3833,242
+weld_core,8306,2763,30218,1816,559,388,2987,4115,21995,8230
