@@ -1,0 +1,14 @@
+project,cooccur_commits,single_prod_class_commits,cooccur_test_refactorings,linked_test_refactorings,linked_prod_classes,top10pct_k,top10pct_share_%,naming_match_%,verdict
+apache_jspwiki,144,36,2272,374,32,4,67.4,39.6,concentrated
+apache_maven-release,35,14,1597,25,10,1,24.0,28.0,diffuse
+apache_openjpa,174,72,5660,368,54,6,44.8,3.3,diffuse
+apache_xmlgraphics-batik,32,4,166,5,4,1,40.0,20.0,diffuse
+connectbot_connectbot,3,3,6,6,2,1,83.3,0.0,concentrated
+cwensel_cascading,139,42,1387,102,38,4,38.2,11.8,diffuse
+davidb_scala-maven-plugin,14,1,60,6,1,1,100.0,100.0,concentrated
+jdbi_jdbi,324,101,3624,393,84,9,39.9,17.0,diffuse
+junit-team_junit4,225,102,1547,394,64,7,36.5,15.2,diffuse
+qos-ch_slf4j,49,19,254,68,13,2,44.1,50.0,diffuse
+sgothel_jogl,310,79,9750,759,54,6,51.5,0.0,concentrated
+unclebob_fitnesse,585,225,5415,1420,148,15,52.4,25.9,concentrated
+POOLED,,,,3920,504,51,52.7,,concentrated
