@@ -1,0 +1,14 @@
+project,cooccur_commits,single_prod_class_commits,cooccur_test_refactorings,linked_test_refactorings,linked_prod_classes,top10pct_k,top10pct_share_%,naming_match_%,verdict
+TooTallNate_Java-WebSocket,16,4,37,4,3,1,50.0,25.0,concentrated
+apache_karaf,139,29,800,135,25,3,54.1,38.5,concentrated
+brianfrankcooper_YCSB,18,7,154,12,5,1,33.3,83.3,diffuse
+cbeust_jcommander,29,18,70,46,3,1,76.1,43.5,concentrated
+cyclestreets_android,8,0,20,0,0,0,0.0,,diffuse
+ervandew_eclim,29,9,319,23,8,1,30.4,73.9,diffuse
+jboss-modules_jboss-modules,17,2,111,6,2,1,83.3,83.3,concentrated
+jenkinsci_gerrit-trigger-plugin,70,42,751,444,26,3,70.7,11.5,concentrated
+lysine-dev_retrofit,128,40,1836,494,29,3,61.1,21.9,concentrated
+sevntu-checkstyle_sevntu.checkstyle,53,33,384,156,25,3,53.8,16.7,concentrated
+vrapper_vrapper,33,11,80,21,11,2,33.3,0.0,diffuse
+weld_core,376,133,2532,606,104,11,45.5,2.6,diffuse
+POOLED,,,,1947,241,25,59.7,,concentrated
