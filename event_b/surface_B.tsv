@@ -1,0 +1,14 @@
+18	0	maven-release-policies/maven-release-semver-policy/pom.xml
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/AbstarctSemVerVersionPolicy.java
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicy.java
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicy.java
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicy.java
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicy.java
+49	0	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicy.java
+11	32	maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicy.java
+64	0	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicyTest.java
+65	0	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicyTest.java
+64	0	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicyTest.java
+65	0	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicyTest.java
+65	0	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicyTest.java
+23	10	maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicyTest.java

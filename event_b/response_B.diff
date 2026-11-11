@@ -1,0 +1,835 @@
+diff --git a/maven-release-policies/maven-release-semver-policy/pom.xml b/maven-release-policies/maven-release-semver-policy/pom.xml
+index 8851c674..9f283b87 100644
+--- a/maven-release-policies/maven-release-semver-policy/pom.xml
++++ b/maven-release-policies/maven-release-semver-policy/pom.xml
+@@ -61,6 +61,24 @@
+       <artifactId>junit</artifactId>
+       <scope>test</scope>
+     </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter</artifactId>
++      <version>5.10.3</version>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter-params</artifactId>
++      <version>5.10.3</version>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.junit.vintage</groupId>
++      <artifactId>junit-vintage-engine</artifactId>
++      <version>5.10.3</version>
++      <scope>test</scope>
++    </dependency>
+   </dependencies>
+ 
+ </project>
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/AbstarctSemVerVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/AbstarctSemVerVersionPolicy.java
+new file mode 100644
+index 00000000..7608fb54
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/AbstarctSemVerVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Abstract base class for SemVer-based VersionPolicy implementations.
++ *
++ * @since 3.3.0
++ */
++abstract class AbstarctSemVerVersionPolicy implements VersionPolicy {
++
++    protected Version createVersionFromRequest(VersionPolicyRequest request) throws VersionParseException {
++        try {
++            return Version.parse(request.getVersion());
++        } catch (IllegalArgumentException e) {
++            throw new VersionParseException(e.getMessage());
++        }
++    }
++
++    protected VersionPolicyResult createResult(Version version) {
++        return new VersionPolicyResult().setVersion(version.toString());
++    }
++
++    protected VersionPolicyResult createSnapshotResult(Version version) {
++        return new VersionPolicyResult().setVersion(version.toString() + "-SNAPSHOT");
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicy.java
+new file mode 100644
+index 00000000..6a93c550
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import javax.inject.Named;
++import javax.inject.Singleton;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Uses SemVer implementation to increase major element when resolving the development version.
++ *
++ * @since 3.3.0
++ */
++@Singleton
++@Named("SemVerMajorDevelopment")
++public class SemVerMajorDevelopmentVersionPolicy extends AbstarctSemVerVersionPolicy {
++
++    @Override
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).toReleaseVersion();
++        return createResult(version);
++    }
++
++    @Override
++    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).next(Version.Element.MAJOR);
++        return createSnapshotResult(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicy.java
+new file mode 100644
+index 00000000..db750693
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import javax.inject.Named;
++import javax.inject.Singleton;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Uses SemVer implementation to increase major element when resolving the release version.
++ *
++ * @since 3.3.0
++ */
++@Singleton
++@Named("SemVerMajorRelease")
++public class SemVerMajorReleaseVersionPolicy extends AbstarctSemVerVersionPolicy {
++
++    @Override
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).toReleaseVersion().next(Version.Element.MAJOR);
++        return createResult(version);
++    }
++
++    @Override
++    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).next(Version.Element.PATCH);
++        return createSnapshotResult(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicy.java
+new file mode 100644
+index 00000000..00437109
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import javax.inject.Named;
++import javax.inject.Singleton;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Uses SemVer implementation to increase minor element when resolving the development version.
++ *
++ * @since 3.3.0
++ */
++@Singleton
++@Named("SemVerMinorDevelopment")
++public class SemVerMinorDevelopmentVersionPolicy extends AbstarctSemVerVersionPolicy {
++
++    @Override
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).toReleaseVersion();
++        return createResult(version);
++    }
++
++    @Override
++    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).next(Version.Element.MINOR);
++        return createSnapshotResult(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicy.java
+new file mode 100644
+index 00000000..f9debea5
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import javax.inject.Named;
++import javax.inject.Singleton;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Uses SemVer implementation to increase minor element when resolving the release version.
++ *
++ * @since 3.3.0
++ */
++@Singleton
++@Named("SemVerMinorRelease")
++public class SemVerMinorReleaseVersionPolicy extends AbstarctSemVerVersionPolicy {
++
++    @Override
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).toReleaseVersion().next(Version.Element.MINOR);
++        return createResult(version);
++    }
++
++    @Override
++    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).next(Version.Element.PATCH);
++        return createSnapshotResult(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicy.java
+new file mode 100644
+index 00000000..a0ca4d82
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicy.java
+@@ -0,0 +1,49 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import javax.inject.Named;
++import javax.inject.Singleton;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
++import org.apache.maven.shared.release.versions.VersionParseException;
++import org.semver.Version;
++
++/**
++ * Uses SemVer implementation to increase patch element when resolving the development version.
++ *
++ * @since 3.3.0
++ */
++@Singleton
++@Named("SemVerPatchDevelopment")
++public class SemVerPatchDevelopmentVersionPolicy extends AbstarctSemVerVersionPolicy {
++
++    @Override
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).toReleaseVersion();
++        return createResult(version);
++    }
++
++    @Override
++    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
++        Version version = createVersionFromRequest(request).next(Version.Element.PATCH);
++        return createSnapshotResult(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicy.java b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicy.java
+index 37f19765..50bfc88f 100644
+--- a/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicy.java
++++ b/maven-release-policies/maven-release-semver-policy/src/main/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicy.java
+@@ -21,49 +21,28 @@ package org.apache.maven.shared.release.policy.semver;
+ import javax.inject.Named;
+ import javax.inject.Singleton;
+ 
+-import org.apache.maven.shared.release.policy.version.VersionPolicy;
+ import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
+ import org.apache.maven.shared.release.policy.version.VersionPolicyResult;
+ import org.apache.maven.shared.release.versions.VersionParseException;
+-import org.eclipse.sisu.Description;
+-import org.semver.Version;
+-import org.semver.Version.Element;
++import org.slf4j.Logger;
++import org.slf4j.LoggerFactory;
+ 
+ /**
++ * Uses SemVer implementation to increase minor element when resolving the development version.
+  *
+- * Uses SemVer implementation to increase minor element when resolving the development version
++ * @deprecated use {@link SemVerMinorDevelopmentVersionPolicy} instead.
+  */
+ @Singleton
+ @Named("SemVerVersionPolicy")
+-@Description("A VersionPolicy following the SemVer rules")
+-public class SemVerVersionPolicy implements VersionPolicy {
++@Deprecated
++public class SemVerVersionPolicy extends SemVerMinorDevelopmentVersionPolicy {
+ 
+-    @Override
+-    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
+-        Version version;
+-        try {
+-            version = Version.parse(request.getVersion());
+-        } catch (IllegalArgumentException e) {
+-            throw new VersionParseException(e.getMessage());
+-        }
+-
+-        VersionPolicyResult result = new VersionPolicyResult();
+-        result.setVersion(version.toReleaseVersion().toString());
+-        return result;
+-    }
++    private final Logger logger = LoggerFactory.getLogger(SemVerVersionPolicy.class);
+ 
+     @Override
+-    public VersionPolicyResult getDevelopmentVersion(VersionPolicyRequest request) throws VersionParseException {
+-        Version version;
+-        try {
+-            version = Version.parse(request.getVersion());
+-        } catch (IllegalArgumentException e) {
+-            throw new VersionParseException(e.getMessage());
+-        }
+-
+-        version = version.next(Element.MINOR);
+-        VersionPolicyResult result = new VersionPolicyResult();
+-        result.setVersion(version + "-SNAPSHOT");
+-        return result;
++    public VersionPolicyResult getReleaseVersion(VersionPolicyRequest request) throws VersionParseException {
++        logger.warn("SemVerVersionPolicy is deprecated and will be removed in future releases. "
++                + "Please use SemVerMinorDevelopment instead.");
++        return super.getReleaseVersion(request);
+     }
+ }
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicyTest.java
+new file mode 100644
+index 00000000..17c3bc00
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorDevelopmentVersionPolicyTest.java
+@@ -0,0 +1,64 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++class SemVerMajorDevelopmentVersionPolicyTest {
++    private final VersionPolicy versionPolicy = new SemVerMajorDevelopmentVersionPolicy();
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 2.0.0-SNAPSHOT",
++        "1.2.3, 2.0.0-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 1.0.0",
++        "1.2.3-SNAPSHOT, 1.2.3",
++        "1.0.0-alpha-SNAPSHOT, 1.0.0",
++        "1.0.0+build.1-SNAPSHOT, 1.0.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getReleaseVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    private static VersionPolicyRequest newVersionPolicyRequest(String version) {
++        return new VersionPolicyRequest().setVersion(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicyTest.java
+new file mode 100644
+index 00000000..1908962c
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMajorReleaseVersionPolicyTest.java
+@@ -0,0 +1,65 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++class SemVerMajorReleaseVersionPolicyTest {
++    private final VersionPolicy versionPolicy = new SemVerMajorReleaseVersionPolicy();
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 1.0.1-SNAPSHOT",
++        "2.0.0, 2.0.1-SNAPSHOT",
++        "1.2.3, 1.2.4-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 2.0.0",
++        "1.2.3-SNAPSHOT, 2.0.0",
++        "1.0.0-alpha-SNAPSHOT, 2.0.0",
++        "1.0.0+build.1-SNAPSHOT, 2.0.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getReleaseVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    private static VersionPolicyRequest newVersionPolicyRequest(String version) {
++        return new VersionPolicyRequest().setVersion(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicyTest.java
+new file mode 100644
+index 00000000..c79131ab
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorDevelopmentVersionPolicyTest.java
+@@ -0,0 +1,64 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++class SemVerMinorDevelopmentVersionPolicyTest {
++    private final VersionPolicy versionPolicy = new SemVerMinorDevelopmentVersionPolicy();
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 1.1.0-SNAPSHOT",
++        "1.2.3, 1.3.0-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 1.0.0",
++        "1.2.3-SNAPSHOT, 1.2.3",
++        "1.0.0-alpha-SNAPSHOT, 1.0.0",
++        "1.0.0+build.1-SNAPSHOT, 1.0.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getReleaseVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    private static VersionPolicyRequest newVersionPolicyRequest(String version) {
++        return new VersionPolicyRequest().setVersion(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicyTest.java
+new file mode 100644
+index 00000000..1aa65d4b
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerMinorReleaseVersionPolicyTest.java
+@@ -0,0 +1,65 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++class SemVerMinorReleaseVersionPolicyTest {
++
++    private final VersionPolicy versionPolicy = new SemVerMinorReleaseVersionPolicy();
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 1.0.1-SNAPSHOT",
++        "1.2.3, 1.2.4-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 1.1.0",
++        "1.2.3-SNAPSHOT, 1.3.0",
++        "1.0.0-alpha-SNAPSHOT, 1.1.0",
++        "1.0.0+build.1-SNAPSHOT, 1.1.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getReleaseVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    private static VersionPolicyRequest newVersionPolicyRequest(String version) {
++        return new VersionPolicyRequest().setVersion(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicyTest.java
+new file mode 100644
+index 00000000..ee812c1f
+--- /dev/null
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerPatchDevelopmentVersionPolicyTest.java
+@@ -0,0 +1,65 @@
++/*
++ * Licensed to the Apache Software Foundation (ASF) under one
++ * or more contributor license agreements.  See the NOTICE file
++ * distributed with this work for additional information
++ * regarding copyright ownership.  The ASF licenses this file
++ * to you under the Apache License, Version 2.0 (the
++ * "License"); you may not use this file except in compliance
++ * with the License.  You may obtain a copy of the License at
++ *
++ *   http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing,
++ * software distributed under the License is distributed on an
++ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++ * KIND, either express or implied.  See the License for the
++ * specific language governing permissions and limitations
++ * under the License.
++ */
++package org.apache.maven.shared.release.policy.semver;
++
++import org.apache.maven.shared.release.policy.version.VersionPolicy;
++import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
++
++import static org.junit.jupiter.api.Assertions.assertEquals;
++
++class SemVerPatchDevelopmentVersionPolicyTest {
++
++    private final VersionPolicy versionPolicy = new SemVerPatchDevelopmentVersionPolicy();
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 1.0.1-SNAPSHOT",
++        "1.2.3, 1.2.4-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 1.0.0",
++        "1.2.3-SNAPSHOT, 1.2.3",
++        "1.0.0-alpha-SNAPSHOT, 1.0.0",
++        "1.0.0+build.1-SNAPSHOT, 1.0.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
++        String suggestedVersion = versionPolicy
++                .getReleaseVersion(newVersionPolicyRequest(requested))
++                .getVersion();
++
++        assertEquals(expected, suggestedVersion);
++    }
++
++    private static VersionPolicyRequest newVersionPolicyRequest(String version) {
++        return new VersionPolicyRequest().setVersion(version);
++    }
++}
+diff --git a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicyTest.java b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicyTest.java
+index 55c89fea..3645c250 100644
+--- a/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicyTest.java
++++ b/maven-release-policies/maven-release-semver-policy/src/test/java/org/apache/maven/shared/release/policy/semver/SemVerVersionPolicyTest.java
+@@ -20,30 +20,43 @@ package org.apache.maven.shared.release.policy.semver;
+ 
+ import org.apache.maven.shared.release.policy.version.VersionPolicy;
+ import org.apache.maven.shared.release.policy.version.VersionPolicyRequest;
+-import org.junit.Test;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.CsvSource;
+ 
+-import static org.junit.Assert.*;
++import static org.junit.jupiter.api.Assertions.assertEquals;
+ 
+ public final class SemVerVersionPolicyTest {
+ 
+     private final VersionPolicy versionPolicy = new SemVerVersionPolicy();
+ 
+-    @Test
+-    public void testConvertToSnapshot() throws Exception {
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0, 1.1.0-SNAPSHOT",
++        "1.2.3, 1.3.0-SNAPSHOT",
++        "1.0.0-alpha, 1.0.0-SNAPSHOT",
++        "1.0.0+build.1, 1.0.0-SNAPSHOT"
++    })
++    public void testConvertToSnapshot(String requested, String expected) throws Exception {
+         String suggestedVersion = versionPolicy
+-                .getDevelopmentVersion(newVersionPolicyRequest("1.0.0"))
++                .getDevelopmentVersion(newVersionPolicyRequest(requested))
+                 .getVersion();
+ 
+-        assertEquals("1.1.0-SNAPSHOT", suggestedVersion);
++        assertEquals(expected, suggestedVersion);
+     }
+ 
+-    @Test
+-    public void testConvertToRelease() throws Exception {
++    @ParameterizedTest
++    @CsvSource({
++        "1.0.0-SNAPSHOT, 1.0.0",
++        "1.2.3-SNAPSHOT, 1.2.3",
++        "1.0.0-alpha-SNAPSHOT, 1.0.0",
++        "1.0.0+build.1-SNAPSHOT, 1.0.0"
++    })
++    public void testConvertToRelease(String requested, String expected) throws Exception {
+         String suggestedVersion = versionPolicy
+-                .getReleaseVersion(newVersionPolicyRequest("1.0.0-SNAPSHOT"))
++                .getReleaseVersion(newVersionPolicyRequest(requested))
+                 .getVersion();
+ 
+-        assertEquals("1.0.0", suggestedVersion);
++        assertEquals(expected, suggestedVersion);
+     }
+ 
+     private static VersionPolicyRequest newVersionPolicyRequest(String version) {
