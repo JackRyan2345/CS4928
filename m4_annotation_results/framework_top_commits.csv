@@ -1,0 +1,105 @@
+sample,project,sha,framework_annotation_refactorings,%_of_project,date,subject
+M2,apache_jspwiki,949c4849422b92b83ed50407065fbeec39a57726,1059,80.1,2017-12-30,Upgraded all test from JUnit 3 to JUnit 4 (no version bump)
+M2,apache_jspwiki,92c51d9853aaea5c4176b391d4da5550035809cf,210,15.9,2018-10-26,Upgrade to JUnit 5 (III):
+M2,apache_jspwiki,6fbd76f2e9e2b1658bc79712511dbbd820a833b3,28,2.1,2019-09-07,2.11.0-M5-git-17:  critical sonarcloud fixes
+M2,apache_jspwiki,6fb14d00ef576715c7e73cb481287d46f7b91abc,5,0.4,2021-03-10,Fix KendraSearchProvider tests
+M2,apache_jspwiki,c77162ee1945149afba97798e433590ed4c07c9c,5,0.4,2021-03-09,temporarily disable KendraSearchProvider tests in order to restore the build
+M2,apache_maven-release,fc226cf21e242eae9db5786925ec9ebfe59014f5,197,41.9,2016-05-21,Migrate all PhaseTests to PlexusJUnit4TestCase
+M2,apache_maven-release,dafdd7f49d4f96f4d3c9e9b525d6150c40b4784b,123,26.2,2022-05-06,[MRELEASE-1087] Upgrade Maven to 3.2.5 (and de-plexus) (#118)
+M2,apache_maven-release,1b21701df33d7af6700a9f969ab38a13c7a64e37,112,23.8,2016-05-21,Introduce PlexusJUnit4TestCase to be able to use advanced JUnit features
+M2,apache_maven-release,61be30eb594e776bff75175c7d9f802885f8dc45,23,4.9,2012-06-08,Upgrade JUnit to 4.10 Add Windows assumption
+M2,apache_maven-release,6af17aaf79664fea36f562ecb4a76be6b7e96b96,4,0.9,2016-05-06,"[MRELEASE-952] Replace JDom as XML transformer Rewrite JDomSCM, ensure it will only be used to write, no accidentally reads from wrong Model"
+M2,apache_openjpa,08bb3a5a0e7573622aa6dc25763cb6513095093b,118,48.0,,
+M2,apache_openjpa,12ec80cd8cc034fa00fa3509a2d75959ef4b582b,76,30.9,,
+M2,apache_openjpa,0b26209a2f37eaa63183b56f6dd5d4966fea73bc,14,5.7,,
+M2,apache_openjpa,3fa4380b478c9d7ae705720c7c70aed89e5e2aab,14,5.7,,
+M2,apache_openjpa,73582cc780d3c72af7a227890dde5180028edfd0,12,4.9,,
+M2,connectbot_connectbot,ad4e8009343f9364d764cfd6c2d91a19bab21820,29,58.0,,
+M2,connectbot_connectbot,f6a7910baadd35799afeefdd476ce16f66392754,4,8.0,,
+M2,connectbot_connectbot,3fc1eb33a0f030731c003608ceaa1c76ddf61901,4,8.0,,
+M2,connectbot_connectbot,42f8bbed334e40471b2869a161de919c2c88ac0d,4,8.0,,
+M2,connectbot_connectbot,2abe2c43e2b7cf99dd2aaa5cff3e1ac6c646d678,3,6.0,,
+M2,cwensel_cascading,a4234263d5ab686bfb135b315fe95273a3578881,256,52.6,,
+M2,cwensel_cascading,e542268168cc5710ab18d784aab3e9cca579d467,172,35.3,,
+M2,cwensel_cascading,81198bc5d2298e9a588e9903ed9fceb7b14e967d,36,7.4,,
+M2,cwensel_cascading,b90e785659099d55587b0ad9fc8d96259d15282e,7,1.4,,
+M2,cwensel_cascading,d90b932441a71040c2c5617afe88d5c06d6222fc,4,0.8,,
+M2,davidb_scala-maven-plugin,d9f45d0dae6955b459367b11f97305d2ec2bad75,7,53.8,,
+M2,davidb_scala-maven-plugin,9c01a887085e72ec066dd28f36130a752bd88f12,6,46.2,,
+M2,jdbi_jdbi,301a0bd7675c5b76411c9dfcc1695eefccedf96c,551,39.0,2021-10-24,Rewrite all unit tests to use JUnit 5
+M2,jdbi_jdbi,05f875413c5ed46d73ac9d75dc86e7f36a99b626,224,15.9,2021-10-14,Rewrite core tests to use junit5 (#1926)
+M2,jdbi_jdbi,112093da2d1f84cd8c25d7b22b4dc2b3b875ef99,221,15.7,2013-12-27,Parallelize the tests.
+M2,jdbi_jdbi,45df252487fbc44285845461171e05cf45ebee84,123,8.7,2014-05-18,"Rework testing infrastructure into the modern era, remove Derby."
+M2,jdbi_jdbi,c6926309b73e58b12275ab1917b86b0a52e7f46c,76,5.4,2018-04-24,ban @Test.expected
+M2,junit-team_junit4,409a8e06c9f2ec5aa0d9db8a3d413f394c290f6d,30,18.3,2009-07-06,Fixing Interceptor->Rule name changes
+M2,junit-team_junit4,54917b88aab026dabb4541276ed875117c1e1faa,30,18.3,2009-07-07,Fixing Interceptor->Rule name changes
+M2,junit-team_junit4,e6769d4009db8030661815965e2e22829a4619ff,10,6.1,2009-05-26,"No Interceptors class, interceptors turned on by default"
+M2,junit-team_junit4,fb7e47081b37842a814e9f35013b9b12a33b3fc3,10,6.1,2009-05-27,"No Interceptors class, interceptors turned on by default"
+M2,junit-team_junit4,46036e7146f9dd0ca44baaec490692b967edd0ce,5,3.0,2009-10-19,"javadoc'ed, and with better names"
+M2,qos-ch_slf4j,acfc07008bb89952ce77c3a6eabbeaa6220566f5,118,71.5,2015-11-06,migrate test to Junit 4 conventions
+M2,qos-ch_slf4j,73874fa327c61b5b05807050986792916a5173c1,15,9.1,2017-03-21,"update packages, migrate test to Junit4"
+M2,qos-ch_slf4j,ca1dbbf65ef5293429c1329b523e7008a47b1964,11,6.7,2014-12-12,Fix tests which are no longer running.
+M2,qos-ch_slf4j,c4f2232073eafe7e51119f65afad595d3af2ac24,9,5.5,2014-02-23,support for Category conversion on slf4j-migrator
+M2,qos-ch_slf4j,58983ea65b0e80dbb604801d4c0b69fb48305c9c,6,3.6,2014-11-25,improved testing
+M2,sgothel_jogl,43cc2ea7529f92068ec3645e87e439f129fec99b,218,54.1,,
+M2,sgothel_jogl,7cac2c276675e059137aa16b7d856c59f0943dac,26,6.5,,
+M2,sgothel_jogl,0bb179669acc812b0580f68b168d0256d07899cb,20,5.0,,
+M2,sgothel_jogl,ac585daa624ec7e8bc747e6e4ef4e1c330f447b5,9,2.2,,
+M2,sgothel_jogl,9291731fec7103301ba36511ceb4375f63170e5c,8,2.0,,
+M2,unclebob_fitnesse,c1444860322475a0124745fd9ecefb5dda4296b4,895,69.5,2013-08-07,Major test class maintenance commit. Package junit.framework is deprecated. Refactored test classes according the 'new' style of writing tests with JUnit.
+M2,unclebob_fitnesse,95a2ec248bfbb62bcc5262aed2d1afe0a383473a,78,6.1,2008-11-12,Got REST interface for tests and suites.  ?format=xml
+M2,unclebob_fitnesse,e88ca42910d30f99917e00dd06f76a49dd9317a6,45,3.5,2009-05-03,PageHistoryResponder
+M2,unclebob_fitnesse,c8be5d6ac6431b673d3f72883f4af1b7ded6f352,18,1.4,2009-01-15,Got CmSystem stubs working.
+M2,unclebob_fitnesse,b32af560635648f8f13e9dd87c7426d5970d0ad7,17,1.3,2009-05-20,LightHouse #121 made adding ScenarioLibraries automatic
+Event_A,TooTallNate_Java-WebSocket,c1ff1edad797d35214e69c3af002fc9fe2002d73,2,28.6,,
+Event_A,TooTallNate_Java-WebSocket,2ce6e6149d0ef44f4919e75326265c64c144a00f,2,28.6,,
+Event_A,TooTallNate_Java-WebSocket,de70cdc76f0bc92e74f626a09a81d9f61582e503,1,14.3,,
+Event_A,TooTallNate_Java-WebSocket,b423f70e0a7201b044f0775a17edbc9e1cf70f6d,1,14.3,,
+Event_A,TooTallNate_Java-WebSocket,455d09e8ff5d4f5ed6e2fcfb5e5af23d396a464e,1,14.3,,
+Event_A,apache_karaf,ee265afdfc6056581a289716626308ddef7e7fc2,24,17.9,,
+Event_A,apache_karaf,abe44838571bf7024df24659fed1f5533676bce3,22,16.4,,
+Event_A,apache_karaf,7144f711b41f5f671cb10f5b270b7f539e0c4db4,5,3.7,,
+Event_A,apache_karaf,b8a03ea515f6ff169f65ff646298f643db4a0212,4,3.0,,
+Event_A,apache_karaf,0ff14a062db03cb6f1d97190bc8590687f51eb78,4,3.0,,
+Event_A,brianfrankcooper_YCSB,366cbf4a06042437fd311b50eb200a19a0318425,2,28.6,,
+Event_A,brianfrankcooper_YCSB,98712967173e6c817268bd996a27200181a3199a,2,28.6,,
+Event_A,brianfrankcooper_YCSB,c00744c6b80f53a566594e2107b49b556ba7666d,2,28.6,,
+Event_A,brianfrankcooper_YCSB,a2d512771ad05678c885d2a8cc4e32619af11aaa,1,14.3,,
+Event_A,cbeust_jcommander,460998fec3b06bf45b024c645b5b5e854de68c24,27,31.0,,
+Event_A,cbeust_jcommander,2bd8800b29d23743998d26c03ef6494d262016a6,10,11.5,,
+Event_A,cbeust_jcommander,dda1651c0b74aa9e8d225096f1d531871460e692,5,5.7,,
+Event_A,cbeust_jcommander,e923414889a04be46c131af01dbe466d10f10721,5,5.7,,
+Event_A,cbeust_jcommander,113ba56cd5ced2168926400ee57bcc61b0d2117d,4,4.6,,
+Event_A,cyclestreets_android,1e6812d1157b0d983bdcb56a4d4c83c9ab2e4d9b,2,33.3,,
+Event_A,cyclestreets_android,924a50c39abfeba12022ea79776b02ee235ebe0b,1,16.7,,
+Event_A,cyclestreets_android,5c69a37715ecb9a8dbfd5198351c3f40aa475f81,1,16.7,,
+Event_A,cyclestreets_android,0ea4cd45ab7ce75d5af4eef917d3ceb00bd6e899,1,16.7,,
+Event_A,cyclestreets_android,6ce24ed2b5f6efc03a24e7db760980c014817689,1,16.7,,
+Event_A,jboss-modules_jboss-modules,80806f582beefb564bd54f3921f83f2227147327,1,33.3,,
+Event_A,jboss-modules_jboss-modules,eb045c22ec57147d52b2109fd737eeec43a21b0d,1,33.3,,
+Event_A,jboss-modules_jboss-modules,b101a26bac2c77c101a10ff27f646fa783810d3a,1,33.3,,
+Event_A,jenkinsci_gerrit-trigger-plugin,5599185b2de1030c08c9b02f81bfc73d9f179279,29,31.5,,
+Event_A,jenkinsci_gerrit-trigger-plugin,e9203b965f07a0ce64d861d46045473e3054157b,12,13.0,,
+Event_A,jenkinsci_gerrit-trigger-plugin,b7b973b69d5a49bb8646629ff0afb13eca62c808,9,9.8,,
+Event_A,jenkinsci_gerrit-trigger-plugin,bed6fa9907692f123e341a55281a172ffb8c03e5,8,8.7,,
+Event_A,jenkinsci_gerrit-trigger-plugin,2ac5b664801a2783fa0c11390fa350076fd9debd,7,7.6,,
+Event_A,lysine-dev_retrofit,3ad087526288ed6e0bd3d0ed32ddd71211a4cdfa,48,55.2,,
+Event_A,lysine-dev_retrofit,4eaf974bbde6dc7eb4a99a0c5bcfe27d1d6cde18,18,20.7,,
+Event_A,lysine-dev_retrofit,34f6a7fdc2f359d05a32f3262825563fc10929b4,4,4.6,,
+Event_A,lysine-dev_retrofit,2ef7ca064584f60416581b0793557eb4277136a1,3,3.4,,
+Event_A,lysine-dev_retrofit,b01bc2af87ef5265e5b2f609dfc283d7aa931428,3,3.4,,
+Event_A,sevntu-checkstyle_sevntu.checkstyle,d9eddc121f84799030d3e83c630b956caa226211,16,35.6,,
+Event_A,sevntu-checkstyle_sevntu.checkstyle,8658223ce0857d7f4bc95509189f46ce87a50cb6,14,31.1,,
+Event_A,sevntu-checkstyle_sevntu.checkstyle,42299e3371f0c286f972ec9dfa71fe7e617f9e6a,4,8.9,,
+Event_A,sevntu-checkstyle_sevntu.checkstyle,5677f09491d986d7f6f5754ef890580549b9cdf7,4,8.9,,
+Event_A,sevntu-checkstyle_sevntu.checkstyle,6dd6b81284321ef665b9187cc2fc8a94db124b60,3,6.7,,
+Event_A,vrapper_vrapper,14108a12de90366d693a6c07fb83a63dc954ca0b,1,20.0,,
+Event_A,vrapper_vrapper,140acd141408520eff1ab370c22d5a0974d0f2f2,1,20.0,,
+Event_A,vrapper_vrapper,b27c82bb24455c5316a8cd22093c3bacdb87c59b,1,20.0,,
+Event_A,vrapper_vrapper,f5a1731f89680cca326c1065ad9c35cd64402ed3,1,20.0,,
+Event_A,vrapper_vrapper,cab7b5007b78a7fba675f71a2f0e99c33a5e1bb5,1,20.0,,
+Event_A,weld_core,201172e20a559e6b4683af41242e244c6e2d5dc3,207,18.0,,
+Event_A,weld_core,f93199d5113cfecccf7f15a4adcff20084319f8f,20,1.7,,
+Event_A,weld_core,06d640bbafd28d73237cf9260ba87770e1828cae,20,1.7,,
+Event_A,weld_core,ea0d3ac6151469262023643a8516e127e892c09c,18,1.6,,
+Event_A,weld_core,eaca0f580f8e7c3273c2d9d5272ca6c5d5f205fa,18,1.6,,
