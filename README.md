@@ -123,12 +123,34 @@ so frozen and late-committed evidence stay separate:
 - The M4 module deviates from the M1 rule (Deviation 4).
 
 ## AI use (material contributions only)
-- [e.g. analysis scripts drafted with AI, then checked against the authors' rq1_freq code and re-run to identical output]
-- [e.g. Event B JUnit 4 port drafted with AI; verified by 49/49 tests and the full build]
-- Final audit (16 Nov 2026): an AI-assisted re-check against the authors' repo found the fitnesse/connectbot
-  cut-off overrun, the narrowed Event B challenge condition and the missing JDK version in the build logs.
-  Each was checked with the scripts and re-runs in `verification/` and the git history, then recorded as
-  dated notes in the tracker.
+- **Analysis scripts:** all analysis scripts (`rq1_analysis.py`, `rq2_analysis.py`, `m4_annotation_analysis.py`,
+  and the `verification/` scripts) were created with AI. We checked `rq1_analysis.py` line by line against
+  the authors' `analyze/src/rq1_freq/analysis.py`, and re-ran every script on the committed data to identical
+  outputs before relying on them.
+- **Event B JUnit builds:** AI was used to port upstream's JUnit 5 SemVer tests to JUnit 4 `Parameterized`
+  (Response A) and to set up the JUnit 5 + Vintage build (Response B). Both were verified by running the
+  tests: 49/49 in each response and the full build (787 tests, 0 failures), re-run on JDK 17 in
+  `verification/jdk17_rerun/`. The diffs are kept in `event_b/response_A.diff` and `response_B.diff`.
+- **Understanding the tasks:** AI was used to interpret the project brief, rubric and Event A/B task sheets
+  and to work out what each stage required. We checked its reading against the documents themselves and
+  the freeze rules before acting on it.
+- **Fact checking and debate:** we used AI to challenge our own claims and its own answers, for example
+  whether results met the frozen decision rules, whether the Event B verdict followed from our prediction,
+  and whether the M4 module choice matched the M1 plan. Disagreements were settled against the data, logs
+  and git history, not the AI's answer.
+- **Final audit (16 Nov 2026):** an AI-assisted re-check against the authors' repo found the fitnesse/connectbot
+  cut-off overrun, the narrowed Event B challenge condition, the deviation of the M4 module from the M1 rule
+  and the missing JDK version in the build logs. Each was confirmed with the scripts and re-runs in
+  `verification/` and the git history, then recorded as dated notes in the tracker.
+- **AI output we corrected:** the audit itself made errors that verification caught. Its first re-run
+  command for `m4_annotation_analysis.py` omitted the `--clones`/`--scan` options, so outputs did not match
+  until fixed. It overstated one figure (97% instead of 96%). It also first stated "JDK 17" as fact before
+  the logs were found not to record a Java version, which led to the explicit JDK 17 re-run.
 
 ## Team
-G08 / P11: [names]
+G08 / P11: 
+23364092 --> Ciarán Harris
+23365277 --> Kai Howley
+23366044 --> Oran Counihan
+23372958 --> Jack Ryan
+23388137 --> Eoin Stack
