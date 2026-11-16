@@ -1,0 +1,12 @@
+Jacks_Results/m2_reproduction_results/refactoringsFitnesse-2024.json
+  post-cut-off commits listed: 28
+  of those in the JSON:        28
+  with refactorings:           2
+  prod instances added:        3
+  test instances added:        1
+Jacks_Results/m2_reproduction_results/refactoringsControlBot-2024.json
+  post-cut-off commits listed: 11
+  of those in the JSON:        11
+  with refactorings:           0
+  prod instances added:        0
+  test instances added:        0

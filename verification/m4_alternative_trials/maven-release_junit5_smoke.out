@@ -1,0 +1,210 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Release                                                      [pom]
+[INFO] Maven Release APIs                                                 [jar]
+[INFO] Maven Release Manager                                              [jar]
+[INFO] 
+[INFO] ---------------< org.apache.maven.release:maven-release >---------------
+[INFO] Building Maven Release 3.1.2-SNAPSHOT                              [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-bytecode-version) @ maven-release ---
+[INFO] Rule 0: org.codehaus.mojo.extraenforcer.dependencies.EnforceBytecodeVersion passed
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-maven-version) @ maven-release ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-java-version) @ maven-release ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (checkstyle-check) @ maven-release ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default) @ maven-release ---
+[INFO] Spotless check skipped
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ maven-release ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.5
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- apache-rat:0.16.1:check (rat-check) @ maven-release ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:main-index (index-project) @ maven-release ---
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:test-index (index-project) @ maven-release ---
+[INFO] 
+[INFO] -------------< org.apache.maven.release:maven-release-api >-------------
+[INFO] Building Maven Release APIs 3.1.2-SNAPSHOT                         [2/3]
+[INFO]   from maven-release-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-bytecode-version) @ maven-release-api ---
+[INFO] Rule 0: org.codehaus.mojo.extraenforcer.dependencies.EnforceBytecodeVersion passed
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-maven-version) @ maven-release-api ---
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-java-version) @ maven-release-api ---
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (checkstyle-check) @ maven-release-api ---
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default) @ maven-release-api ---
+[INFO] Spotless check skipped
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ maven-release-api ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.5
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ maven-release-api ---
+[INFO] skip non existing resourceDirectory /home/harris/m4/maven-release/maven-release-api/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- apache-rat:0.16.1:check (rat-check) @ maven-release-api ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ maven-release-api ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:main-index (index-project) @ maven-release-api ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ maven-release-api ---
+[INFO] skip non existing resourceDirectory /home/harris/m4/maven-release/maven-release-api/src/test/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ maven-release-api ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:test-index (index-project) @ maven-release-api ---
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ maven-release-api ---
+[INFO] 
+[INFO] -----------< org.apache.maven.release:maven-release-manager >-----------
+[INFO] Building Maven Release Manager 3.1.2-SNAPSHOT                      [3/3]
+[INFO]   from maven-release-manager/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-bytecode-version) @ maven-release-manager ---
+[INFO] Rule 0: org.codehaus.mojo.extraenforcer.dependencies.EnforceBytecodeVersion passed
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-maven-version) @ maven-release-manager ---
+[INFO] 
+[INFO] --- enforcer:3.4.1:enforce (enforce-java-version) @ maven-release-manager ---
+[INFO] 
+[INFO] --- modello:2.3.0:java (default) @ maven-release-manager ---
+[INFO] outputDirectory: /home/harris/m4/maven-release/maven-release-manager/target/generated-sources/modello
+[INFO] Working on model: src/main/mdo/release-descriptor.mdo
+[INFO] Generating current version: 3.0.0
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (checkstyle-check) @ maven-release-manager ---
+[INFO] There is 1 error reported by Checkstyle 9.3 with config/maven_checks_nocodestyle.xml ruleset.
+[INFO] Ignored 1 error, 0 violation remaining.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] --- spotless:2.43.0:check (default) @ maven-release-manager ---
+[INFO] Spotless check skipped
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ maven-release-manager ---
+[INFO] Preparing remote bundle org.apache.apache.resources:apache-jar-resource-bundle:1.5
+[INFO] Copying 3 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ maven-release-manager ---
+[INFO] skip non existing resourceDirectory /home/harris/m4/maven-release/maven-release-manager/src/main/resources
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/classes
+[INFO] 
+[INFO] --- apache-rat:0.16.1:check (rat-check) @ maven-release-manager ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ maven-release-manager ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:main-index (index-project) @ maven-release-manager ---
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ maven-release-manager ---
+[INFO] Copying 881 resources from src/test/resources to target/test-classes
+[INFO] Copying 3 resources from target/maven-shared-archive-resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ maven-release-manager ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 72 source files with javac [debug deprecation release 8] to target/test-classes
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/exec/InvokerMavenExecutorTest.java:[38,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[39,41] org.apache.maven.artifact.factory.ArtifactFactory in org.apache.maven.artifact.factory has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[41,44] org.apache.maven.artifact.repository.DefaultArtifactRepository in org.apache.maven.artifact.repository has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/GenerateReleasePomsPhaseTest.java:[50,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/GenerateReleasePomsPhaseTest.java:[51,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/InputVariablesPhaseTest.java:[42,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/InputVariablesPhaseTest.java:[43,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RemoveReleasePomsPhaseTest.java:[46,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RemoveReleasePomsPhaseTest.java:[47,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunCompleteGoalsPhaseTest.java:[40,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunCompleteGoalsPhaseTest.java:[41,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunCompleteGoalsPhaseTest.java:[42,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunPrepareGoalsPhaseTest.java:[40,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunPrepareGoalsPhaseTest.java:[41,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/RunPrepareGoalsPhaseTest.java:[42,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCheckModificationsPhaseTest.java:[54,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[41,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[42,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[43,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[44,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmTagPhaseTest.java:[61,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmTagPhaseTest.java:[62,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmTagPhaseTest.java:[63,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[84,13] org.apache.maven.artifact.factory.ArtifactFactory in org.apache.maven.artifact.factory has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[93,34] org.apache.maven.artifact.factory.ArtifactFactory in org.apache.maven.artifact.factory has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[157,21] org.apache.maven.artifact.repository.DefaultArtifactRepository in org.apache.maven.artifact.repository has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[200,32] getDependencyArtifacts() in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[203,44] createArtifacts(org.apache.maven.artifact.factory.ArtifactFactory,java.lang.String,org.apache.maven.artifact.resolver.filter.ArtifactFilter) in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[202,36] setDependencyArtifacts(java.util.Set<org.apache.maven.artifact.Artifact>) in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[211,32] getDependencyArtifacts() in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[213,39] getDependencyArtifacts() in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/AbstractReleaseTestCase.java:[214,61] getDependencyArtifacts() in org.apache.maven.project.MavenProject has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[145,25] <T>isNull(java.lang.Class<T>) in org.mockito.Matchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitDevelopmentPhaseTest.java:[160,25] <T>isNull(java.lang.Class<T>) in org.mockito.Matchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[105,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[122,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[144,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[161,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[187,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[203,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[225,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[243,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[269,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[287,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[326,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[343,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[433,74] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[WARNING] /home/harris/m4/maven-release/maven-release-manager/src/test/java/org/apache/maven/shared/release/phase/ScmCommitPreparationPhaseTest.java:[453,25] <T>isNull(java.lang.Class<T>) in org.mockito.ArgumentMatchers has been deprecated
+[INFO] 
+[INFO] --- sisu:0.9.0.M2:test-index (index-project) @ maven-release-manager ---
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ maven-release-manager ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.maven.shared.release.util.PomFinderTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 s -- in org.apache.maven.shared.release.util.PomFinderTest
+[INFO] Running org.apache.maven.shared.release.Junit5SmokeTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.065 s -- in org.apache.maven.shared.release.Junit5SmokeTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Release 3.1.2-SNAPSHOT:
+[INFO] 
+[INFO] Maven Release ...................................... SUCCESS [  5.828 s]
+[INFO] Maven Release APIs ................................. SUCCESS [  2.492 s]
+[INFO] Maven Release Manager .............................. SUCCESS [ 12.134 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.600 s
+[INFO] Finished at: 2026-11-05T00:29:32Z
+[INFO] ------------------------------------------------------------------------

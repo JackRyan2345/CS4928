@@ -1,0 +1,52 @@
+diff --git a/maven-release-manager/pom.xml b/maven-release-manager/pom.xml
+index bed690a0..05f4100b 100644
+--- a/maven-release-manager/pom.xml
++++ b/maven-release-manager/pom.xml
+@@ -154,6 +154,16 @@
+       <artifactId>junit</artifactId>
+       <scope>test</scope>
+     </dependency>
++    <dependency>
++      <groupId>org.junit.vintage</groupId>
++      <artifactId>junit-vintage-engine</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter</artifactId>
++      <scope>test</scope>
++    </dependency>
+     <dependency>
+       <groupId>org.hamcrest</groupId>
+       <artifactId>hamcrest</artifactId>
+diff --git a/pom.xml b/pom.xml
+index 29a55fbf..a33cf3e6 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -95,6 +95,7 @@
+     <wagonVersion>3.5.3</wagonVersion>
+     <slf4jVersion>1.7.36</slf4jVersion>
+     <junitVersion>4.13.2</junitVersion>
++    <junit5Version>5.10.3</junit5Version>
+     <maven.site.path>maven-release-archives/maven-release-LATEST</maven.site.path>
+     <project.build.outputTimestamp>2024-07-11T18:14:14Z</project.build.outputTimestamp>
+ 
+@@ -286,6 +287,18 @@
+         <version>${junitVersion}</version>
+         <scope>test</scope>
+       </dependency>
++      <dependency>
++        <groupId>org.junit.vintage</groupId>
++        <artifactId>junit-vintage-engine</artifactId>
++        <version>${junit5Version}</version>
++        <scope>test</scope>
++      </dependency>
++      <dependency>
++        <groupId>org.junit.jupiter</groupId>
++        <artifactId>junit-jupiter</artifactId>
++        <version>${junit5Version}</version>
++        <scope>test</scope>
++      </dependency>
+       <dependency>
+         <groupId>org.mockito</groupId>
+         <artifactId>mockito-core</artifactId>

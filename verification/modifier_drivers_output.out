@@ -1,0 +1,14 @@
+project file | test Add Parameter Modifier | test Add Variable Modifier | test Add Method Annotation
+Jacks_Results/m2_reproduction_results/refactoringsControlBot-2024.json | 0 | 0 | 38 (84% in top-3 commits)
+Jacks_Results/m2_reproduction_results/refactoringsFitnesse-2024.json | 33 (85% in top-3 commits) | 96 (92% in top-3 commits) | 1744 (66% in top-3 commits)
+ciaran_results/m2_reproduction_results/junit4.json | 9 (67% in top-3 commits) | 3 (100% in top-3 commits) | 126 (62% in top-3 commits)
+ciaran_results/m2_reproduction_results/scala_maven_plugin.json | 0 | 0 | 7 (100% in top-3 commits)
+eoins_results/m2_reproduction_results/jogl.json | 3740 (98% in top-3 commits) | 2979 (86% in top-3 commits) | 508 (24% in top-3 commits)
+eoins_results/m2_reproduction_results/openjpa.json | 0 | 2 (100% in top-3 commits) | 3679 (95% in top-3 commits)
+eoins_results/m2_reproduction_results/xmlgraphics-batik.json | 0 | 0 | 3 (100% in top-3 commits)
+kai_results/m2_reproduction_results/cascading.json | 0 | 2 (100% in top-3 commits) | 453 (95% in top-3 commits)
+kai_results/m2_reproduction_results/jdbi.json | 22 (82% in top-3 commits) | 87 (100% in top-3 commits) | 964 (54% in top-3 commits)
+kai_results/m2_reproduction_results/jspwiki.json | 228 (57% in top-3 commits) | 2002 (67% in top-3 commits) | 1302 (92% in top-3 commits)
+oran_results/m2_reproduction_results/refactoringsMavenRelease-2024.json | 13 (100% in top-3 commits) | 5 (100% in top-3 commits) | 559 (77% in top-3 commits)
+oran_results/m2_reproduction_results/refactoringsSlf4j-2024.json | 2 (100% in top-3 commits) | 1 (100% in top-3 commits) | 156 (90% in top-3 commits)
+TOTAL | 4047 | 5177 | 9539
